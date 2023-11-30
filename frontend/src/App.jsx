@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import TravelImage from "./assets/travel-image.png";
+import "./App.css";
+import RegisterForm from "../components/auth/Registerform";
+import LoginForm from "../components/auth/Loginform";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [showRegisterForm, setShowRegisterForm] = useState(false);
+
+  const toggleRegisterForm = () => {
+    setShowRegisterForm(!showRegisterForm);
+  };
+
+  const toggleLoginForm = () => {
+    setShowLoginForm(!showLoginForm);
+    setShowRegisterForm(false);
+  };
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+        <a
+          href="https://www.google.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            height={300}
+            src={TravelImage}
+            className="logo"
+            alt="Viajes logo"
+          />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>Viaja con-Migo</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          Like {count}
         </button>
         <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+          <a href="#" onClick={toggleRegisterForm}>
+            Regístrate{" "}
+          </a>
+          e{" "}
+          <a href="#" onClick={toggleLoginForm}>
+            Inicia sesión
+          </a>{" "}
+          y Descubre un Mundo a tu Alcance.
         </p>
+        {showRegisterForm && <RegisterForm />} {showLoginForm && <LoginForm />}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <p className="read-the-docs">Tu viaje a un solo click de distancia!</p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
