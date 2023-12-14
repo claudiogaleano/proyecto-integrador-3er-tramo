@@ -7,11 +7,9 @@ const authMiddleware = async (req, res, next) => {
 
   // Verifica si el token existe
   if (!token) {
-    return res
-      .status(401)
-      .json({
-        error: "Acceso no autorizado. Se requiere token de autenticación.",
-      });
+    return res.status(401).json({
+      error: "Acceso no autorizado. Se requiere token de autenticación.",
+    });
   }
 
   try {

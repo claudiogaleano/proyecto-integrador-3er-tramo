@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const postController = require("../controllers/postController");
+const postController = require("../controllers/postcontrollers");
 const authMiddleware = require("../middleware/authmiddleware");
 
 // Rutas relacionadas con las publicaciones
@@ -8,8 +8,8 @@ router.get("/posts", postController.getAllPosts);
 router.get("/posts/:postId", postController.getPostById);
 router.post(
   "/posts",
-  authMiddleware.authenticateUser,
-  postController.createPost
+  authmiddleware.authenticateUser,
+  postcontrollers.createPost
 );
 
 module.exports = router;
