@@ -1,20 +1,23 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const router = express.Router();
+
 require("dotenv").config();
 
 // Configuración de Mongoose
-mongoose.connect("tu_url_de_conexion_a_mongodb", {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-app.use("/auth", router);
+app.use("/auth", require("./routes/auth"));
 app.use("/posts", require("./routes/post"));
 app.use("/comments", require("./routes/comment"));
 
 const port = process.env.PORT || 3000;
+
+app.use(express.json());
+
 app.listen(env.PORT, () => {
   console.log(`Servidor en ejecución en el puerto ${env.PORT}`);
 });

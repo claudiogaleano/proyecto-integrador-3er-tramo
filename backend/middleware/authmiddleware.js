@@ -14,7 +14,7 @@ const authMiddleware = async (req, res, next) => {
 
   try {
     // Verifica y decodifica el token
-    const decoded = jwt.verify(token, "tu_secreto"); // Reemplaza 'tu_secreto' con tu clave secreta
+    const decoded = jwt.verify(token, "Almita55");
 
     // Busca al usuario en la base de datos utilizando el ID del token decodificado
     const user = await User.findById(decoded.userId);
@@ -33,4 +33,6 @@ const authMiddleware = async (req, res, next) => {
   }
 };
 
-module.exports = authMiddleware;
+module.exports = {
+  authenticateUser: authMiddleware,
+};

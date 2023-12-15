@@ -8,8 +8,8 @@ router.get("/posts", postController.getAllPosts);
 router.get("/posts/:postId", postController.getPostById);
 router.post(
   "/posts",
-  authmiddleware.authenticateUser,
-  postcontrollers.createPost
+  authMiddleware.authenticateUser,
+  postController.createPost
 );
 
 module.exports = router;
